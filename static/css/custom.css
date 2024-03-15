@@ -21,6 +21,7 @@ table tr {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.15em;
     opacity: 0.5;
+    user-select: none;
 }
 
 .activate-windows .title {

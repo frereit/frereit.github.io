@@ -1,0 +1,85 @@
+<svg width="1200" height="720"
+    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <style>
+        svg {
+            font-family: Helvetica, Arial, sans-serif, -apple-system;
+        }
+        .aes {
+        fill: #ECB7E2;
+        stroke: #000;
+        stroke-width: 2;
+        }
+
+        text.mono {
+            font-family: monospace;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .aes {
+                fill: #55174A;
+                stroke: #fff;
+            }
+
+            text {
+                fill: #fff;
+            }
+
+            line {
+                stroke: #fff;
+            }
+
+            marker {
+                fill: #fff;
+            }
+        }
+    </style>
+    <defs>
+        <marker
+            id="arrow"
+            viewBox="0 0 10 10"
+            refX="5"
+            refY="5"
+            markerWidth="5"
+            markerHeight="5"
+            orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" />
+        </marker>
+    </defs>
+    <text x="600" y="60" font-size="70" text-anchor="middle" dominant-baseline="middle">📄 Plaintext</text>
+    <text id="plaintext" class="mono" x="600" y="130" font-size="50" text-anchor="middle" dominant-baseline="middle">
+        deadbeefcafeaffebadbabe000000001</text>
+    <line
+        x1="600"
+        y1="150"
+        x2="600"
+        y2="240"
+        stroke="black"
+        stroke-width="7"
+        marker-end="url(#arrow)" />
+    <g transform="translate(450, 250)">
+        <rect class="aes" x="0" y="0" width="300" height="200" rx="15" />
+        <text x="150" y="100" font-size="70" text-anchor="middle" dominant-baseline="middle">AES</text>
+    </g>
+    <text x="70" y="350" font-size="70" text-anchor="start" dominant-baseline="middle">🔑 Key</text>
+    <line
+        x1="320"
+        y1="350"
+        x2="440"
+        y2="350"
+        stroke="black"
+        stroke-width="7"
+        marker-end="url(#arrow)" />
+
+    <line
+        x1="600"
+        y1="460"
+        x2="600"
+        y2="550"
+        stroke="black"
+        stroke-width="7"
+        marker-end="url(#arrow)" />
+    <text x="600" y="560" font-size="70" text-anchor="middle" dominant-baseline="hanging">🔐
+        Ciphertext</text>
+    <text id="ciphertext" class="mono" x="600" y="650" font-size="50" text-anchor="middle" dominant-baseline="hanging">
+        7b55e15faaaad0367bf885ec20b9e015</text>
+</svg>

@@ -49,6 +49,13 @@ jobs:
         uses: actions/configure-pages@v4
       - name: Install Node.js dependencies
         run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
+      - name: Build WebAssembly
+        run: |
+          rustup update stable
+          rustup default stable
+          cargo install wasm-pack
+          cd wasm/cantor-zassenhaus/
+          wasm-pack build --target web --no-pack -d ../../static/wasm/
       - name: Build with Hugo
         env:
           # For maximum backward compatibility with Hugo modules

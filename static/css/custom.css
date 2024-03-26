@@ -5,6 +5,41 @@ table tr {
     display: table;
 }
 
+figure {
+    text-align: center;
+}
+
+figure img {
+    border: 1px solid #ddd;
+}
+
+@media (prefers-color-scheme: light) {
+    input.error {
+        background-color: pink;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    input.error {
+        background-color: maroon;
+    }
+}
+
+div.input-grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-gap: 10px;
+    align-items: center;
+}
+
+div.input-grid input {
+    margin-bottom: 0;
+}
+
+input.code {
+    font-family: monospace;
+}
+
 .badge {
     width: 100%;
     text-align: center;

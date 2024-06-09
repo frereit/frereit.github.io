@@ -429,7 +429,7 @@ Although more complicated than the keystream recovery, when a nonce is reused, w
 
 Thank you for reading all the way through this huge post! I hope I was able to explain AES-GCM well enough and that you've got a good feel for why resuing a nonce with AES-GCM is such a big deal.
 
-If you're interested, the code powering all the interactive widgets here is on GitHub. The factorization algorithms were implemented in [Rust and built for WebAssembly](https://github.com/frereit/frereit.github.io/blob/cantor_zassenhaus/wasm/cantor-zassenhaus/src/factorize.rs) and all the DOM manipulation and reactiveness was done manually in a [1200 line JavaScript file 😭](https://github.com/frereit/frereit.github.io/blob/cantor_zassenhaus/static/js/aesgcm_widgets.js).
+If you're interested, the code powering all the interactive widgets here is on GitHub. The factorization algorithms were implemented in [Rust and built for WebAssembly](https://github.com/frereit/frereit.github.io/tree/main/wasm/cantor-zassenhaus/src) and all the DOM manipulation and reactiveness was done manually in a [1200 line JavaScript file 😭](https://github.com/frereit/frereit.github.io/blob/main/static/js/aesgcm_widgets.js).
 
 This blog post was an enormous amount of work, but I hope it was worth it. If you have any questions, comments, or feedback, please don't hesitate to reach out to me on [Mastodon](https://infosec.exchange/@fre), I'd love to here from you! Also, if you'd like to send some donation my way, don't. Instead send some feedback my way and some money to the [Electronic Frontier Foundation](https://supporters.eff.org/donate/), [The Internet Archive](https://archive.org/donate) or anything, really, that you think is important. Thanks again for reading!
 

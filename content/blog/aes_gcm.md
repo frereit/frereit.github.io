@@ -1,15 +1,13 @@
 ---
 author: "frereit"
 title: "AES-GCM and breaking it on nonce reuse"
-date: "2024-03-15"
+date: "2024-06-09"
 description: "In this post, we will look at how the security of the AES-GCM mode of operation can be completely compromised when a nonce is reused."
 tags:
     - "cryptography"
     - "algorithm"
 toc: true
 ---
-
-
 
 ## An overview of this article (TL;DR)
 

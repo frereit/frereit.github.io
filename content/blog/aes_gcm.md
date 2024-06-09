@@ -435,8 +435,6 @@ This blog post was an enormous amount of work, but I hope it was worth it. If yo
 
 Lastly, a huge thank you to [Prof. Dr. Johannes Bauer](https://johannes-bauer.com/) who very kindly reviewed this blog post and provided me with some valuable feedback. I really appreciate it!
 
-[![Creative Commons License](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png)](http://creativecommons.org/licenses/by-nc-sa/4.0/)
-
 Thanks again for reading!
 
 ## Addendum: Using SageMath to do the heavy lifting

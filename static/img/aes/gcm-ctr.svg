@@ -1,8 +1,12 @@
 <svg width="2900" height="1100"
     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <style>
+        @font-face {
+            font-family: Monaspace;
+            src: url(/font/MonaspaceArgon-Regular.woff2);
+        }
         svg {
-            font-family: Helvetica, Arial, sans-serif, -apple-system;
+            font-family: Monaspace;
         }
         .aes {
         fill: #ECB7E2;
@@ -11,7 +15,7 @@
         }
 
         text.mono {
-            font-family: monospace;
+            font-family: Monaspace;
         }
 
         @media (prefers-color-scheme: dark) {

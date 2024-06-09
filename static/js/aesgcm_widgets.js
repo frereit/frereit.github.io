@@ -307,7 +307,7 @@ export function gcm_y0_calculation_widget(container) {
     add_label("nonce", nonce, grid);
 
     let p1 = document.createElement("p");
-    p1.innerHTML = "The nonce is exactly 12 bytes long, so we can use it as the <code>y0</code> value directly:";
+    p1.innerHTML = "The nonce is exactly 12 bytes long, so we can use it as the <code>Y<sub>0</sub></code> value directly:";
     p1.setAttribute("style", "grid-column: 1 / span 2");
     grid.appendChild(p1);
 
@@ -335,9 +335,9 @@ export function gcm_y0_calculation_widget(container) {
         }
 
         if (nonce_bytes.length != 12) {
-            p1.innerHTML = "The nonce is not 12 bytes long, so we cannot use it as the <code>y0</code> value directly. Instead we have to pass it through the <code>GHASH</code> function and use the result as the 16-byte <code>y0</code> block:"
+            p1.innerHTML = "The nonce is not 12 bytes long, so we cannot use it as the <code>Y<sub>0</sub></code> value directly. Instead we have to pass it through the <code>GHASH</code> function and use the result as the 16-byte <code>Y<sub>0</sub></code> block:"
         } else {
-            p1.innerHTML = "The nonce is exactly 12 bytes long, so we can use it as the <code>y0</code> value directly:";
+            p1.innerHTML = "The nonce is exactly 12 bytes long, so we can use it as the <code>Y<sub>0</sub></code> value directly:";
         }
         let cryptor = await AESGCM.new(key_bytes, nonce_bytes, new Uint8Array());
         y0_output.value = toHexString(cryptor.y0);
@@ -731,15 +731,15 @@ export function ghash_widget(container) {
             add_output("GHASH", q, new_dynamic_content);
         }
 
-        add_text("Lastly, we have to add <code>E<sub>k</sub>(y<sub>0</sub>)</code> to the <code>GHASH</code> value to get the final authentication tag:", new_dynamic_content);
+        add_text("Lastly, we have to add <code>E<sub>k</sub>(Y<sub>0</sub>)</code> to the <code>GHASH</code> value to get the final authentication tag:", new_dynamic_content);
 
         let y0 = F128Element.from_block(cryptor.y_block(0));
         let ek_y0 = F128Element.from_block(await cryptor.raw_aes(y0.to_block()));
         let tag = F128Element.from_block(q).add(ek_y0).to_block();
 
-        add_output("y<sub>0</sub>", y0.to_block(), new_dynamic_content);
-        add_output("E<sub>k</sub>(y<sub>0</sub>)", ek_y0.to_block(), new_dynamic_content);
-        add_output("T = GHASH ⊕ E<sub>k</sub>(y<sub>0</sub>)", tag, new_dynamic_content);
+        add_output("Y<sub>0</sub>", y0.to_block(), new_dynamic_content);
+        add_output("E<sub>k</sub>(Y<sub>0</sub>)", ek_y0.to_block(), new_dynamic_content);
+        add_output("T = GHASH ⊕ E<sub>k</sub>(Y<sub>0</sub>)", tag, new_dynamic_content);
 
         dynamic_content.replaceWith(new_dynamic_content);
         dynamic_content = new_dynamic_content;
@@ -1208,7 +1208,7 @@ export function h_candidates_widget(container) {
             dynamic_content.appendChild(ul);
 
             let explain = document.createElement("p");
-            explain.innerHTML = "Now, for each candidate value, we need to do two things: First, we need to figure out the value of <code>E<sub>k</sub>(y<sub>0</sub>)</code> given the candidate key. Remember that the encrypted <code>y<sub>0</sub></code> block cancelled out when we constructed the equation. To \"recover\" it, we calculate <code>GHASH</code> for the ciphertext of the first messsage and XOR the result with the actual tag of the first message. By definition, this is the <code>E<sub>k</sub>(y<sub>0</sub>)</code> block. Second, we caculate <code>GHASH</code> for the third message and use the <code>E<sub>k</sub>(y<sub>0</sub>)</code> value from the first step. If the result matches up with the actual value of the third tag, we have found <code>H</code>!";
+            explain.innerHTML = "Now, for each candidate value, we need to do two things: First, we need to figure out the value of <code>E<sub>k</sub>(Y<sub>0</sub>)</code> given the candidate key. Remember that the encrypted <code>Y<sub>0</sub></code> block cancelled out when we constructed the equation. To \"recover\" it, we calculate <code>GHASH</code> for the ciphertext of the first messsage and XOR the result with the actual tag of the first message. By definition, this is the <code>E<sub>k</sub>(Y<sub>0</sub>)</code> block. Second, we caculate <code>GHASH</code> for the third message and use the <code>E<sub>k</sub>(Y<sub>0</sub>)</code> value from the first step. If the result matches up with the actual value of the third tag, we have found <code>H</code>!";
             dynamic_content.appendChild(explain);
 
             let xor = function (ghash, t) {
@@ -1225,15 +1225,15 @@ export function h_candidates_widget(container) {
                 let ghash_hex = toHexString(ghash);
                 let ey0 = xor(ghash, t1);
                 let candidate_p = document.createElement("p");
-                candidate_p.innerHTML = "For the <code>H</code> value <code>" + zeros[i] + "</code>, <code>GHASH</code> of the first message gives us <code>" + ghash_hex + "</code>. Assuming this was the real <code>GHASH</code> output for the first message, the value of the encrypted <code>y<sub>0</sub></code> block must have been <code>" + toHexString(ey0) + "</code>. ";
+                candidate_p.innerHTML = "For the <code>H</code> value <code>" + zeros[i] + "</code>, <code>GHASH</code> of the first message gives us <code>" + ghash_hex + "</code>. Assuming this was the real <code>GHASH</code> output for the first message, the value of the encrypted <code>Y<sub>0</sub></code> block must have been <code>" + toHexString(ey0) + "</code>. ";
                 dynamic_content.appendChild(candidate_p);
 
                 let ghash_ct3 = GHASH.ghash(ct3, new Uint8Array(), h_candidate);
                 let candidate_t3 = xor(ghash_ct3, ey0);
-                candidate_p.innerHTML += "Using the H value to calculate <code>GHASH</code> of the third message and XORing with <code>E<sub>k</sub>(y<sub>0</sub>)</code> yields <code>" + toHexString(candidate_t3) + "</code>. ";
+                candidate_p.innerHTML += "Using the H value to calculate <code>GHASH</code> of the third message and XORing with <code>E<sub>k</sub>(Y<sub>0</sub>)</code> yields <code>" + toHexString(candidate_t3) + "</code>. ";
 
                 if (toHexString(candidate_t3) == toHexString(t3)) {
-                    candidate_p.innerHTML += "This matches up with the real tag of the third message. This means that this value for <code>H</code> is the real <code>H</code> value used during the AES-GCM authentication! We can use <code>H = " + zeros[i] + "</code> and <code>E<sub>k</sub>(y<sub>0</sub>) = " + toHexString(ey0) + "</code> to perfectly replicate the authentication tag, without knowing the AES key!";
+                    candidate_p.innerHTML += "This matches up with the real tag of the third message. This means that this value for <code>H</code> is the real <code>H</code> value used during the AES-GCM authentication! We can use <code>H = " + zeros[i] + "</code> and <code>E<sub>k</sub>(Y<sub>0</sub>) = " + toHexString(ey0) + "</code> to perfectly replicate the authentication tag, without knowing the AES key!";
                     break;
                 } else {
                     candidate_p.innerHTML += "This does not match up with the real tag of the third message. Although this value for <code>H</code> is a solution to the equation, it isn't the real value used in <code>GHASH</code>.";

@@ -311,7 +311,7 @@ export function gcm_y0_calculation_widget(container) {
     p1.setAttribute("style", "grid-column: 1 / span 2");
     grid.appendChild(p1);
 
-    add_label("y0", y0_output, grid);
+    add_label("Y<sub>0</sub>", y0_output, grid);
 
     async function update() {
         let nonce_bytes;

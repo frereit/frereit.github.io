@@ -32,7 +32,7 @@ Because every single possible block of 128-bit data can be decrypted using AES, 
 There are three key sizes you can choose from when using AES: 128, 192, and 256. The key size changes some internal parameters of the algorithm, but the basic structure is the same. In this blog post, we will only be considering AES-128 but the same principles apply to the other key sizes as well, and for that matter, to any block cipher.
 
 <figure>
-<img src="/img/aes/aes-block-cipher.svg" alt="AES is a bijective function parameterize by a key" style="width: 50%;" id="aes-block-cipher">
+<img loading="lazy" src="/img/aes/aes-block-cipher.svg" alt="AES is a bijective function parameterize by a key" data-ffwidth="51%" style="width: 50%;" id="aes-block-cipher">
 <figcaption style="font-size: 0.8em;">AES is a bijective function parameterized by a key</figcaption>
 </figure>
 
@@ -87,7 +87,7 @@ Notice how `c2 ⊕ p1 ⊕ c1` is the same as `p2` as long as `p1` is long enough
 Although not necessary for understanding the security issue, let's look at how the keystream is generated in GCM. In GCM, we start off with some initial block of 16 bytes called `Y`<sub>`0`</sub> that is calculated from the given nonce. Incrementing this block means taking the last 4 bytes and interpreting them as a 32-bit big-endian integer and incrementing that integer by 1. We start off by incrementing the initial block and then encrypting it using AES-128. This will gives us 16 bytes of output, which we then use as the first 16 bytes of the keystream. We then increment the block again and encrypt it again to get the next 16 bytes of keystream, and so on. This process is repeated until the entire plaintext is encrypted. Note that if the plaintext falls short of a full 16 bytes, we simply only take as many bytes as we need from the keystream instead of the full 16 bytes. This process of "counting up" and encrypting the resulting block to get the keystream is the "Counter Mode" part of Galois/Counter Mode.
 
 <figure>
-<img src="/img/aes/gcm-ctr.svg" alt="GCM uses a simple counter to generate consecutive keystream blocks" style="width: 95%;" id="gcm-ctr-mode">
+<img loading="lazy" src="/img/aes/gcm-ctr.svg" alt="GCM uses a simple counter to generate consecutive keystream blocks" data-ffwidth="99%" style="width: 100%;" id="gcm-ctr-mode">
 <figcaption style="font-size: 0.8em;">GCM uses a simple counter to generate consecutive keystream blocks</figcaption>
 </figure>
 
@@ -235,7 +235,7 @@ Now that we have the basics of Galois field arithmetic down, we can look at the 
 To use `GHASH`, we first need to derive a 128-bit block that we can use as the `GHASH` key `H`. This is done by encrypting a block of 16 null bytes using AES and the AES key. This block is then interpreted as a polynomial and used as the `GHASH` key `H` for the rest of the `GHASH` computation:
 
 <figure>
-<img src="/img/aes/h-key.svg" alt="The GHASH key H is derived by encrypting a block of 16 null bytes using AES-128 and the AES key" style="width: 50%;">
+<img loading="lazy" src="/img/aes/h-key.svg" alt="The GHASH key H is derived by encrypting a block of 16 null bytes using AES-128 and the AES key" data-ffwidth="51%" style="width: 50%;">
 <figcaption style="font-size: 0.8em;">The GHASH key H is derived by encrypting a block of 16 null bytes using AES-128 and the AES key</figcaption>
 </figure>
 
@@ -244,7 +244,7 @@ To compute `GHASH`, we first need to represent the data we want to authenticate 
 To start the computation, we initialize a `GF(2`<sup>`128`</sup>`)` element `Q` to `0`. We then process the prepared blocks in sequence. The blocks from the associated data are processed first, followed by the blocks from the ciphertext. The length block is processed last. For each block, we interpret the block as a `GF(2`<sup>`128`</sup>`)` element and add it to `Q` using the addition operation in `GF(2`<sup>`128`</sup>`)` (which is just the XOR operation) and then multiply `Q` by the `GHASH` key `H` using the multiplication and reduction operation we defined earlier.
 
 <figure>
-    <img src="/img/aes/ghash.svg" alt="The GHASH function processes 128-bit blocks in order" style="width: 95%;">
+    <img loading="lazy" src="/img/aes/ghash.svg" alt="The GHASH function processes 128-bit blocks in order" data-ffwidth="99%" style="width: 100%;">
     <figcaption style="font-size: 0.8em;">The GHASH function processes 128-bit blocks in order</figcaption>
 </figure>
 
@@ -467,4 +467,17 @@ This immediately gives us the candidate values for `H`, no need to jump through 
 <script type="module">
     import { register_synced_inputs } from "/js/input_sync.js";
     register_synced_inputs();
+</script>
+<script>
+    // https://bugzilla.mozilla.org/show_bug.cgi?id=1901414
+    if (navigator.userAgent.indexOf("Firefox") != -1) {
+        let imgs = document.getElementsByTagName("img");
+        for (let i = 0; i < imgs.length; i++) {
+            imgs[i].onload = () => {
+                setTimeout(() => {
+                    imgs[i].style.width = imgs[i].dataset.ffwidth;
+                }, 100);
+            }
+        }
+    }
 </script>

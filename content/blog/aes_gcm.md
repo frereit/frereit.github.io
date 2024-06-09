@@ -354,7 +354,7 @@ Once we have a square-free polynomial that is the product of polynomials of equa
 
 I'll outline the main idea of the Cantor-Zassenhaus algorithm here, but again, you can find [pseudocode on Wikipedia](https://en.wikipedia.org/wiki/Factorization_of_polynomials_over_finite_fields#Cantor%E2%80%93Zassenhaus_algorithm)[^3]. We want to factor a polynomial `f` into two factors. This assumes we already have a square-free polynomial and that it is the product of polynomials of equal degrees `d`. For polynomials in `GF(2`<sup>`128`</sup>`)`, the algorithm works as follows:
 
-[^3]: Note however that the pseudocode in Wikipedia is for odd-characteristic fields. For `GF(2`<sup>`128`</sup>`)`, we need to raise the the random polynomial `h` to the power of `⅓ ⋅ (2`<sup>`d ⋅ 128`</sup>`) - 1`, instead of `½`.
+[^3]: Note however that the pseudocode in Wikipedia is for odd-characteristic fields. For `GF(2`<sup>`128`</sup>`)`, we need to raise the the random polynomial `h` to the power of `⅓ ⋅ (2`<sup>`d ⋅ 128`</sup>`- 1)`, instead of `½`.
 
 1. Pick a random polynomial `h` of degree less than `f` and compute the greatest common divisor of `f` and `h`.
 2. Set `M = ⅓(2`<sup>`d ⋅ 128`</sup>` - 1)` and compute the greatest common denominator of `h`<sup>`M`</sup>` - 1` and `f`. We'll call this `g`.

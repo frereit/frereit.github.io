@@ -11,7 +11,7 @@ toc: true
 
 ## An overview of this article (TL;DR)
 
-TL;DR: AES-GCM is great, as long as every nonce (**n**umber used **once**) is truly unique. Once a nonce is reused, AES-GCM completely falls apart.
+TL;DR: AES-GCM is great, as long as every nonce (mnemonic: **n**umber used **once**) is truly unique. Once a nonce is reused, AES-GCM completely falls apart.
 
 If you've ever worked with AES-GCM, you may have heard that reusing a nonce can lead to catastrophic security failures. In this post, we will look at how exactly all security guarantees of AES-GCM can be broken when a nonce is reused even once.
 
@@ -66,7 +66,7 @@ To do this, GCM uses the block cipher (in our case, AES-128) to generate a seque
 
 However, there's a problem: Let's assume for a moment that we have two plaintexts `p1` and `p2` and we want to encrypt them both using the same key. If the keystream was only generated using the key, then the keystream for `p1` would be the same as the keystream for `p2`. The ciphertexts would then be `c1 = p1 ⊕ keystream` and `c2 = p2 ⊕ keystream`. At first glance, this seems fine, but it is not. If an attacker knows the plaintext `p1` and the ciphertext `c1`, then they can compute the keystream by XORing `p1` and `c1` together (`keystream = p1 ⊕ c1`) and then decrypt `c2` by XORing `c2` with the keystream (`p2 = c2 ⊕ keystream = c2 ⊕ (p1 ⊕ c1)`). This is a huge security issue, as it allows an attacker to decrypt any ciphertext they have the plaintext for, without knowing the key. This is why we need to introduce a **nonce**.
 
-A nonce, short for "number used once", is a random number transfered along with each ciphertext that may never be reused (under the same key). We use the nonce as an additional input to the block cipher when generating the keystream so that for each ciphertext, the keystream is different. This means that even if an attacker knows the plaintext and ciphertext for one message, they cannot use that information to decrypt any other ciphertext. When a nonce is reused, however, the keystream is the same, and an attacker can use the same technique as above to decrypt any ciphertext that was encrypted using the same nonce.
+A nonce is a random number transfered along with each ciphertext that may never be reused under the same key. We use the nonce as an additional input to the block cipher when generating the keystream so that for each ciphertext, the keystream is different. This means that even if an attacker knows the plaintext and ciphertext for one message, they cannot use that information to decrypt any other ciphertext. When a nonce is reused, however, the keystream is the same, and an attacker can use the same technique as above to decrypt any ciphertext that was encrypted using the same nonce.
 
 Let's take a look at an example! First, we choose a nonce and generate a keystream using the key from earlier and the chosen nonce:
 

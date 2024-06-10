@@ -439,7 +439,7 @@ Thanks again for reading!
 
 ## Addendum: Using SageMath to do the heavy lifting
 
-In this blog post, I've shown how the square free factorization, the distinct degree factorization, and the Cantor-Zassenhaus algorithms can be used to break AES-GCM. To be able to show you the internals right in your browser, I've implemented the algorithms from scratch in [Rust](https://github.com/frereit/frereit.github.io/blob/cantor_zassenhaus/wasm/cantor-zassenhaus/src/factorize.rs) but if you actually want to execute this attack in real life, you can use [SageMath](https://www.sagemath.org/) to calculate the roots of the polynomial, instead of implementing the algorithms yourself.
+In this blog post, I've shown how the square free factorization, the distinct degree factorization, and the Cantor-Zassenhaus algorithms can be used to break AES-GCM. To be able to show you the internals right in your browser, I've implemented the algorithms from scratch in [Rust](https://github.com/frereit/frereit.github.io/blob/main/wasm/cantor-zassenhaus/src/factorize.rs) but if you actually want to execute this attack in real life, you can use [SageMath](https://www.sagemath.org/) to calculate the roots of the polynomial, instead of implementing the algorithms yourself.
 
 First, setup the `GF(2`<sup>`128`</sup>`)` field:
 

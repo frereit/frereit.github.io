@@ -1,6 +1,5 @@
 ---
 title: "Privacy Policy"
-date: 2024-06-15
 ---
 
 This personal blog is hosted on GitHub Pages, a static site hosting service provided by GitHub, Inc. This Privacy Policy outlines what information is collect when you visit this site, how it is used, and your rights regarding your data.
@@ -29,6 +28,6 @@ I do not have access to or use any information collected by GitHub. Any informat
 
 ## Changes to This Privacy Policy
 
-I may update this Privacy Policy from time to time. Any changes will be posted on this page, and the date at the top of the policy will be updated to reflect the latest revision.
+I may update this Privacy Policy from time to time. Any changes will be posted here.
 
 2024-06-15: Inital version.

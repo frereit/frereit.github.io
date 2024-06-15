@@ -49,6 +49,19 @@ input.code {
     height: 2em;
 }
 
+.legal {
+    width: 100%;
+    text-align: center;
+}
+
+.legal {
+    font-size: small;
+}
+
+.legal a {
+    color: gray;
+}
+
 .activate-windows {
     position: fixed;
     bottom: 40px;
@@ -71,4 +84,12 @@ input.code {
     .activate-windows {
         display: none;
     }
+}
+
+.email::before {
+    content: 'hi';
+}
+
+.email::after {
+    content: 'frereit.de';
 }

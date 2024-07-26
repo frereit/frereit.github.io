@@ -62,6 +62,17 @@ input.code {
     color: gray;
 }
 
+.friends {
+    padding-left: 0;
+}
+
+.friends li {
+    display: block;
+    float: left;
+    list-style: none;
+    padding-right: 1em;
+}
+
 .activate-windows {
     position: fixed;
     bottom: 40px;

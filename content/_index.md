@@ -8,5 +8,16 @@ You can check out my latest posts [here](/blog) or subscribe to my [RSS feed](/i
 
 ### my friends
 
+<ul class="friends">
+
+<li>
 <a href="https://bardenn.uk"><img src="/img/buttons/bardenn.gif" alt="Bardenn"
             style="width: 100px" /></a>
+</li>
+
+<li>
+<a href="https://niklas.kirschall.com/blog/"><img src="/img/buttons/nkxxll.gif" alt="nkxxl"
+            style="width: 100px" /></a>
+</li>
+
+</ul>

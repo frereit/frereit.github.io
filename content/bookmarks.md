@@ -15,4 +15,4 @@ In this section, I'll be collecting links to articles, papers, blog posts, and o
 - [Get your work recognized: write a brag document](https://jvns.ca/blog/brag-documents/)
 - [Macht der Wahlberechtigten unter 30](https://www.draketo.de/politik/macht-unter-30)
 - [Software disenchantment](https://tonsky.me/blog/disenchantment/)
-
+- [Mario meets Pareto](https://www.mayerowitz.io/blog/mario-meets-pareto)

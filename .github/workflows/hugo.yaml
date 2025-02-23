@@ -72,7 +72,7 @@ jobs:
           echo '<!DOCTYPE html><script>window.location.pathname = "/bootstring_decoding";</script><p>You probably landed here because you had an old link. I&rsquo;ve since moved the paths of the articles around. The article you wanted to read is at <a href="/bootstring_decoding">/bootstring_decoding</a>.</p>' > public/posts/bootstring.html
           echo '<!DOCTYPE html><script>window.location.pathname = "/bootstring_encoding";</script><p>You probably landed here because you had an old link. I&rsquo;ve since moved the paths of the articles around. The article you wanted to read is at <a href="/bootstring_encoding">/bootstring_encoding</a>.</p>' > public/posts/bootstring_encoding.html
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v3
         with:
           path: ./public
 

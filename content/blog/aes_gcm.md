@@ -324,13 +324,13 @@ The formula for the second tag `T2` is similar:
 Notice how in both formulas `E`<sub>`k`</sub>`(y`<sub>`0`</sub>`)` appears. This is the crucial part. Remember that `E`<sub>`k`</sub>`(y`<sub>`0`</sub>`)` is the encryption of the `Y`<sub>`0`</sub> block using the AES key. The `Y`<sub>`0`</sub> block is only dependant on the nonce, which we assume to have been the same in both messages, and of course we assume both messages were encrypted with the same key. This means that `E`<sub>`k`</sub>`(y`<sub>`0`</sub>`)` is exactly the same value in both tags. This means that `E`<sub>`k`</sub>`(y`<sub>`0`</sub>`)` can be cancelled out by adding the two equations together:
 
 `T1 ⊕ T2 = ((U1`<sub>`0`</sub>` ⨂ H`<sup>`3`</sup>`) ⊕ (U1`<sub>`1`</sub>` ⨂ H`<sup>`2`</sup>`) ⊕ (U1`<sub>`2`</sub>` ⨂ H) ⊕ E`<sub>`k`</sub>`(y`<sub>`0`</sub>`)) ⊕ ((U2`<sub>`0`</sub>` ⨂ H`<sup>`3`</sup>`) ⊕ (U2`<sub>`1`</sub>` ⨂ H`<sup>`2`</sup>`) ⊕ (U2`<sub>`2`</sub>` ⨂ H) ⊕ E`<sub>`k`</sub>`(y`<sub>`0`</sub>`))` <br/>
-`=  ((U1`<sub>`0`</sub>` ⊕ U2`<sub>`0`</sub>`) ⨂ H`<sup>`4`</sup>`) ⊕ ((U1`<sub>`1`</sub>` ⊕ U2`<sub>`1`</sub>`) ⨂ H`<sup>`2`</sup>`) ⊕ ((U1`<sub>`2`</sub>` ⊕ U2`<sub>`2`</sub>`) ⨂ H)`.
+`=  ((U1`<sub>`0`</sub>` ⊕ U2`<sub>`0`</sub>`) ⨂ H`<sup>`3`</sup>`) ⊕ ((U1`<sub>`1`</sub>` ⊕ U2`<sub>`1`</sub>`) ⨂ H`<sup>`2`</sup>`) ⊕ ((U1`<sub>`2`</sub>` ⊕ U2`<sub>`2`</sub>`) ⨂ H)`.
 
 By adding the two equations together, we have completely eliminated `E`<sub>`k`</sub>`(y`<sub>`0`</sub>`)`. We'll now look at what's left in this formula, and how we can use it to recover `H`.
 
 Rearraning the formula by adding `T1 ⊕ T2` on both sides gives us a zero on one side of the equation:
 
-`0 = ((U1`<sub>`0`</sub>` ⊕ U2`<sub>`0`</sub>`) ⨂ H`<sup>`4`</sup>`) ⊕ ((U1`<sub>`1`</sub>` ⊕ U2`<sub>`1`</sub>`) ⨂ H`<sup>`2`</sup>`) ⊕ ((U1`<sub>`2`</sub>` ⊕ U2`<sub>`2`</sub>`) ⨂ H) ⊕  T1 ⊕ T2`
+`0 = ((U1`<sub>`0`</sub>` ⊕ U2`<sub>`0`</sub>`) ⨂ H`<sup>`3`</sup>`) ⊕ ((U1`<sub>`1`</sub>` ⊕ U2`<sub>`1`</sub>`) ⨂ H`<sup>`2`</sup>`) ⊕ ((U1`<sub>`2`</sub>` ⊕ U2`<sub>`2`</sub>`) ⨂ H) ⊕  T1 ⊕ T2`
 
 Now, you might notice, this is _extremely_ similar to a polynomial equation. In fact, it is a polynomial equation for `H`! Forget for a moment that `H` and all the `U` values are in `GF(2`<sup>`128`</sup>`)` and think of any other polynomial equation you might have seen, like `4x`<sup>`4`</sup>` + 2x`<sup>`3`</sup>` + 3x`<sup>`2`</sup>` + 7x + 1 = 0`. This is exactly the same, just with `H` instead of `x` and with coefficients the coefficients `U1`<sub>`i`</sub>` ⊕ U2`<sub>`i`</sub> instead of a regular real number like `4`. 
 

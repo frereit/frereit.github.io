@@ -5,6 +5,7 @@ date: 2024-01-01T00:00:00Z
 
 In this section, I'll be collecting links to articles, papers, blog posts, and other resources that I find interesting without any categorization and in no particular order.
 
+- [Raft Consensus Algorithms](https://blog.outlandish.claims/p/raft-consensus-algorithms)
 - [Visualizing Delaunay Triangulation](https://ianthehenry.com/posts/delaunay/)
 - [This World of Ours](https://www.usenix.org/system/files/1401_08-12_mickens.pdf)
 - [Calling All Hackers](https://phrack.org/issues/71/17.html#article)

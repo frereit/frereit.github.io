@@ -36,7 +36,6 @@ hideMadeWithLine = true
 
 [params.author]
 name = "Frederik Reiter"
-email = "hi@frereit.de"
 
 [[menu.main]]
 name = "Home"

@@ -6,7 +6,7 @@ date: 2024-01-01T00:00:00Z
 In this section, I'll be collecting links to articles, papers, blog posts, and other resources that I find interesting without any categorization and in no particular order.
 
 - [What I Learned About Billionaires at Jeff Bezos’s Private Retreat](https://www.theatlantic.com/magazine/2026/05/billionaire-consequence-free-reality/686588/?gift=fXb4ymsFcV2ntAzqIpmYvZ5SHmVudSgCCvY8EbJPC2Q)
-- [ML-KEM Myth busting](https://keymaterial.net/2025/11/27/ml-kem-mythbusting/)
+- [ML-KEM Mythbusting](https://keymaterial.net/2025/11/27/ml-kem-mythbusting/)
 - [Do I belong in tech anymore? On quitting, the spread of AI, and the loss of an ideal.](https://ky.fyi/posts/ai-burnout)
 - [The world in which IPv6 was a good design](https://apenwarr.ca/log/20170810)
 - [Raft Consensus Algorithms](https://blog.outlandish.claims/p/raft-consensus-algorithms)

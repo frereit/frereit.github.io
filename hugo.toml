@@ -12,7 +12,7 @@ disableKinds = ["taxonomy"]
 tag = "tags"
 
 [permalinks]
-blog = "/:slugorfilename/"
+blog = "/:slugorcontentbasename/"
 tags = "/blog/:slug"
 
 [markup.goldmark.renderer]

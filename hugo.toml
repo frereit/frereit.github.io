@@ -36,6 +36,7 @@ hideMadeWithLine = true
 
 [params.author]
 name = "Frederik Reiter"
+fediverse = "@fre@infosec.exchange"
 
 [[menu.main]]
 name = "Home"

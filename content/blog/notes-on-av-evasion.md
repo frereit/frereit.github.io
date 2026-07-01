@@ -79,4 +79,4 @@ To summarize:
 - Intentionality, i.e., using special APIs or tricks only when there is a good reason, leads to less suspicious behavior.
 - Masquerading as well-known software by including their code and metadata gives you a higher trust baseline than completely new code.
 
-<small>writen by a human</small>
+<small>written by a human</small>
